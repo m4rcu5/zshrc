@@ -1,0 +1,35 @@
+#!/bin/env zsh
+
+ARGS=""
+
+RDP=$(which xfreerdp)
+[[ ! $@ =~ /bpp:[0-9]* ]] && ARGS="${ARGS} /bpp:32"
+[[ ! $@ =~ /network:[a-z]* ]] && ARGS="${ARGS} /network:broadband"
+ARGS="${ARGS} +clipboard -wallpaper -grab-keyboard"
+
+if [[ ${#@} == 0 ]]; then
+    echo "Usage: rdp [domain/][user@]host[:port] [<rdesktop_options>]" >&2
+    return 1
+fi
+
+if [[ ! $@ =~ /size:[0-9x]* ]]; then
+    local WIDTH=$(xrandr | grep \* | awk '{print $1}' | cut -dx -f1)
+    local HEIGHT=$(($(xrandr | grep \* | awk '{print $1}' | cut -dx -f2)-40))
+    ARGS="${ARGS} /size:${WIDTH}x${HEIGHT}"
+fi
+
+[[ $1 =~ '/' ]] && local DOMAIN=$( echo $1 | sed -re 's/^([a-z0-9_-]+)\/.*$/\1/i' )
+[[ $1 =~ '@' ]] && local USER=$( echo $1 | sed -re 's/^([a-z0-9_-]+\/)?([a-z0-9_\.-]*)@.*$/\2/i' )
+local HOST=$( echo $1 | sed -re 's/^(.*\/)?(.*@)?(.*)$/\3/i' )
+
+shift
+
+[[ -n $DOMAIN ]] && ARGS="$ARGS /d:$DOMAIN"
+[[ -n $USER ]] && ARGS="$ARGS /u:$USER"
+[[ -n $HOST ]] && ARGS="$ARGS /v:$HOST"
+
+ARGS=$( echo $ARGS | sed -re 's/^ (.*)$/\1/' )
+
+echo -e "\n\033[1mStarting RDP with: $RDP $@ $ARGS\033[0m\n"
+
+( exec $(echo $RDP $@ $ARGS) )
