@@ -139,3 +139,6 @@ compinit -id $ZSH/cache/zcompdump
 
 # Complete them as ssh
 compdef _ssh sshc=ssh
+
+# Complete them as scp
+compdef _scp scpc=scp

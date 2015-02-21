@@ -20,15 +20,19 @@ alias grep='grep --color=auto'
 # Some short hand commands
 alias l='ls -lF'
 alias ll='ls -lh --time-style=long-iso'
+alias lt='ll -rt'
 alias ns='netstat -ltup'
+alias vihosts="sudo vim /etc/hosts"
 alias j='jobs'
-alias gen_pass='< /dev/urandom tr -dc .$_A-Z-a-z-0-9 | head -c12; echo'
+alias gen_pass='LC_ALL=C < /dev/urandom tr -dc .$_A-Z-a-z-0-9 | head -c12; echo'
 
-# Week starts on mondy
+# Week starts on monday
 alias cal='cal -m'
 
 # Ssh without KnownHosts
 alias sshc='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+alias scpc='scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+
 
 
 #
