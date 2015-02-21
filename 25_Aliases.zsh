@@ -24,7 +24,7 @@ alias lt='ll -rt'
 alias ns='netstat -ltup'
 alias vihosts="sudo $EDITOR /etc/hosts"
 alias j='jobs'
-alias gen_pass='< /dev/urandom tr -dc .$_A-Z-a-z-0-9 | head -c12; echo'
+alias gen_pass='LC_ALL=C < /dev/urandom tr -dc .$_A-Z-a-z-0-9 | head -c12; echo'
 
 # Week starts on monday
 alias cal='cal -m'
