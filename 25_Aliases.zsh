@@ -26,7 +26,7 @@ alias vihosts="sudo $EDITOR /etc/hosts"
 alias j='jobs'
 alias gen_pass='< /dev/urandom tr -dc .$_A-Z-a-z-0-9 | head -c12; echo'
 
-# Week starts on mondy
+# Week starts on monday
 alias cal='cal -m'
 
 # Ssh without KnownHosts
