@@ -22,6 +22,7 @@ alias l='ls -lF'
 alias ll='ls -lh --time-style=long-iso'
 alias lt='ll -rt'
 alias ns='netstat -ltup'
+alias vihosts="sudo $EDITOR /etc/hosts"
 alias j='jobs'
 alias gen_pass='< /dev/urandom tr -dc .$_A-Z-a-z-0-9 | head -c12; echo'
 
