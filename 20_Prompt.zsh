@@ -11,8 +11,8 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' stagedstr ':S'
 zstyle ':vcs_info:*' unstagedstr ':U'
 
-zstyle ':vcs_info:(hg|git):*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}%c%u|%F{1}%a%F{5}]%f '
-zstyle ':vcs_info:(hg|git):*' formats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}%c%u]%f '
+zstyle ':vcs_info:(hg|git):*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}%c%u%m|%F{1}%a%F{5}]%f '
+zstyle ':vcs_info:(hg|git):*' formats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}%c%u%m]%f '
 
 # Prompt theme
 function promptSetup () {
