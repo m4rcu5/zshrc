@@ -29,6 +29,8 @@ alias cal='cal -m'
 
 # Ssh without KnownHosts
 alias sshc='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+alias scpc='scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+
 
 
 #
