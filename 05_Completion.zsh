@@ -135,7 +135,7 @@ zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<-
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path $ZSH/cache/zcompcache
 
-compinit -id $ZSH/cache/zcompdump
+compinit -i -d $ZSH/cache/zcompdump
 
 # Complete them as ssh
 compdef _ssh sshc=ssh
