@@ -30,7 +30,7 @@ alias gen_pass='LC_ALL=C < /dev/urandom tr -dc .$_A-Z-a-z-0-9 | head -c12; echo'
 alias cal='cal -m'
 
 # Remove 256color from ssh sessions
-alias ssh="TERM=${TERM%-256color} /usr/bin/ssh"
+ssh() { TERM=${TERM%-256color} /usr/bin/ssh $@ }
 
 # Ssh without KnownHosts
 alias sshc='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
