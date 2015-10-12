@@ -8,8 +8,8 @@ if [ -d $BREW_COREUTILS ]; then
     export MANPATH="${BREW_COREUTILS}/libexec/gnuman:$MANPATH"
 else
     # the OSX way for ls colors.
-	export CLICOLOR=1
-	# TODO: we should add an LSCOLORS here..
+    export CLICOLOR=1
+    # TODO: we should add an LSCOLORS here..
 fi
 
 # add homebrew's zsh-completions
