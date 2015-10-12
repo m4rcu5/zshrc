@@ -4,6 +4,9 @@
 
 autoload -Uz compinit
 
+# Load local completions
+fpath=($ZSH/completions $fpath)
+
 # General completion technique
 # complete as much u can ..
 zstyle ':completion:*' completer _complete _list _oldlist _expand _ignored _match _correct _approximate _prefix

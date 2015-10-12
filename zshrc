@@ -2,11 +2,10 @@
 
 ZSH=$HOME/.zsh
 
-# Autoload zsh functions.
-fpath=($ZSH/functions $fpath)
-autoload -U $ZSH/functions/*(:t)
-
 # Load all of the config files that end in .zsh
-for config_file ($ZSH/*.zsh) source $config_file
+for config_file ($ZSH/<00-99>_*.zsh) source $config_file
+
+# Autoload zsh functions.
+autoload -U $ZSH/functions/*(:t)
 
 unset ZSH
