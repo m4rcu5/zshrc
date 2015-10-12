@@ -93,13 +93,13 @@ bindkey "${terminfo[kich1]}" quoted-insert
 # [Space] - do history expansion
 bindkey ' ' magic-space
 
-# [Ctrl-RightArrow] - move forward one word
-bindkey '^[Oc' forward-word
-bindkey '^[[1;5C' forward-word
+# [Ctrl|Alt-RightArrow] - move forward one word
+bindkey '\C-[Oc' forward-word
+bindkey '\e\e[C' forward-word
 
-# [Ctrl-LeftArrow] - move backward one word
-bindkey '^[Od' backward-word
-bindkey '^[[1;5D' backward-word
+# [Ctrl|Alt-LeftArrow] - move backward one word
+bindkey '\C-[Od' backward-word
+bindkey '\e\e[D' backward-word
 
 # [Shift-Tab] - move through the completion menu backwards
 bindkey "${terminfo[kcbt]}" reverse-menu-complete
