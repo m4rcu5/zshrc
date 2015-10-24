@@ -1,6 +1,13 @@
 [[ $(uname -s) == "Darwin" ]] || return
 
-BREW_COREUTILS=$(brew --prefix coreutils)
+if which brew > /dev/null
+then
+    if [ ! -f "$ZSH/cache/coreutils_path" ]
+    then
+        brew --prefix coreutils > "$ZSH/cache/coreutils_path"
+    fi
+    BREW_COREUTILS=$(cat "$ZSH/cache/coreutils_path")
+fi
 
 if [ -d $BREW_COREUTILS ]; then
     # let GNU coreutils installed by brew take preecedence on Mac systems
