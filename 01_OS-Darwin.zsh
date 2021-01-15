@@ -2,11 +2,11 @@
 
 if which brew > /dev/null
 then
-    if [ ! -f "$ZSH/cache/coreutils_path" ]
+    if [ ! -f "$HOME/.cache/zsh/coreutils_path" ]
     then
-        brew --prefix coreutils > "$ZSH/cache/coreutils_path"
+        brew --prefix coreutils > "$HOME/.cache/zsh/coreutils_path"
     fi
-    BREW_COREUTILS=$(cat "$ZSH/cache/coreutils_path")
+    BREW_COREUTILS=$(cat "$HOME/.cache/zsh/coreutils_path")
 fi
 
 if [ -d $BREW_COREUTILS ]; then

@@ -42,9 +42,9 @@ setopt nomatch
 
 # Different History files for chroots
 if [[ ! -z $DEBIAN_CHROOT ]]; then
-    HISTFILE=$ZSH/cache/history_$DEBIAN_CHROOT
+    HISTFILE=$HOME/.cache/zsh/history_$DEBIAN_CHROOT
 else
-    HISTFILE=$ZSH/cache/history
+    HISTFILE=$HOME/.cache/zsh/history
 fi
 SAVEHIST=100000
 HISTSIZE=120000
