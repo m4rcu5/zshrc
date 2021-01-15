@@ -4,10 +4,22 @@
 
 export PATH=~/bin:$PATH:/sbin:/usr/sbin
 export PAGER=less
-export LESS='--ignore-case --silent --RAW-CONTROL-CHARS --chop-long-lines'
+
+# Set some standard options for our pager (less)
+# -i  = Causes searches to ignore case
+# -q  = Disable terminal bell
+# -R  = Output "raw" control characters. (colors)
+# -s  = Squeeze multiple blank lines.
+# -x4 = Set tab stops to 4 spaces.
+# -S  = Causes lines longer than the screen width to be chopped
+#         (truncated) rather than wrapped.
+# -X  = Ignore ignore termcap initialization. With xterms it keeps
+#         the last page of the document on the screen. (see
+#         http://www.shallowsky.com/linux/noaltscreen.html)
+export LESS='-iqRsSx4X'
 
 # Use source highlighting if available
-if which src-hilite-lesspipe.sh &> /dev/null; then
+if $(command -v src-hilite-lesspipe.sh &>/dev/null); then
     export LESSOPEN="| src-hilite-lesspipe.sh %s"
 fi
 
