@@ -10,14 +10,6 @@ zle -N self-insert url-quote-magic
 autoload -U edit-command-line
 zle -N edit-command-line
 
-# Magic quotes for '', "", (), [], and {}
-magic-single-quotes()   { if [[ $LBUFFER[-1] == \' ]]; then zle self-insert; zle .backward-char; else zle self-insert; fi }; zle -N magic-single-quotes
-magic-double-quotes()   { if [[ $LBUFFER[-1] == \" ]]; then zle self-insert; zle .backward-char; else zle self-insert; fi }; zle -N magic-double-quotes
-magic-parentheses()     { if [[ $LBUFFER[-1] == \( ]]; then zle self-insert; zle .backward-char; else zle self-insert; fi }; zle -N magic-parentheses
-magic-square-brackets() { if [[ $LBUFFER[-1] == \[ ]]; then zle self-insert; zle .backward-char; else zle self-insert; fi }; zle -N magic-square-brackets
-magic-curly-brackets()  { if [[ $LBUFFER[-1] == \{ ]]; then zle self-insert; zle .backward-char; else zle self-insert; fi }; zle -N magic-curly-brackets
-magic-angle-brackets()  { if [[ $LBUFFER[-1] == \< ]]; then zle self-insert; zle .backward-char; else zle self-insert; fi }; zle -N magic-angle-brackets
-
 # Adds sudo to the line
 run-with-sudo() { [[ $BUFFER != sudo\ * ]] && LBUFFER="sudo $LBUFFER" }
 zle -N run-with-sudo
@@ -124,14 +116,6 @@ bindkey '^I' expand-or-complete-with-dots
 
 # File rename magick
 bindkey '^[m' copy-prev-shell-word
-
-# Move cursor between chars when typing '', "", (), [], and {}
-bindkey \' magic-single-quotes
-bindkey \" magic-double-quotes
-bindkey \) magic-parentheses
-bindkey \] magic-square-brackets
-bindkey \} magic-curly-brackets
-bindkey \> magic-angle-brackets
 
 # Disable flow control
 stty -ixon -ixoff
