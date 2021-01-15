@@ -1,10 +1,11 @@
 #
 # Online syntax highlighting
 #
+local PLUGIN='/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
 
-if [ -d $ZSH/zsh-syntax-highlighting ]; then
-	ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-	source $ZSH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -f ${PLUGIN} ]; then
+    ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+    source ${PLUGIN}
 fi
 
 ZSH_HIGHLIGHT_STYLES[cursor]='none'
