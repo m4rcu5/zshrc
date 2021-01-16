@@ -1,0 +1,55 @@
+#!/bin/env zsh
+
+# Path to mount SMBNetFS
+SMB_MOUNT=$HOME/Samba
+
+# Exit if SMBNetFS is not installed
+if ! $(command -v smbnetfs &>/dev/null); then
+    echo "SMBNetFS not found!" && return 255
+fi
+
+case $1 in
+    start|"")
+        # Early exit when already mounted
+        if $(mountpoint -q $SMB_MOUNT); then
+            echo "SMBNetFS is already mounted" && return
+        fi
+
+        # Check for configuration file
+        if [ ! -e $HOME/.smb/smbnetfs.conf ]; then
+            echo "No configuration file for SMBNetFS found. Please create ~/.smb/smbnetfs.conf before starting." && return 1
+        fi
+
+        # Create mount path
+        mkdir -pv $SMB_MOUNT || return 1
+
+        # Mount SMBNetFS
+        smbnetfs -o big_writes,readdir_ino $SMB_MOUNT
+
+        if [ $? -eq 0 ]; then
+            echo "Mounted SMBNetFS on ${SMB_MOUNT}"
+        else
+            echo "Failed to mount SMBNetFS" && return 1
+        fi
+        ;;
+
+    stop)
+        # Unmount SMBNetFS
+        if $(mountpoint -q $SMB_MOUNT); then
+            fusermount -u $SMB_MOUNT
+
+            if [ $? -eq 0 ]; then
+                echo "Sucessfully unmounted ${SMB_MOUNT}"
+            else
+                echo "Failed to unmount ${SMB_MOUNT}" && return 1
+            fi
+        else
+            echo "SMBNetFS is not mounted" && return
+        fi
+        ;;
+
+    *)
+        echo "Usage: $0 {start|stop}"
+        return 1
+        ;;
+esac
