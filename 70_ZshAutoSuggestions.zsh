@@ -1,7 +1,7 @@
 #
 # As you type auto command suggestions
 #
-local PLUGIN='/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh'
+PLUGIN='/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh'
 
 # Load plugin
 if [ -f ${PLUGIN} ]; then
@@ -23,3 +23,5 @@ if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
 else
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=005'
 fi
+
+unset PLUGIN

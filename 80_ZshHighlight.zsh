@@ -1,7 +1,7 @@
 #
 # Online syntax highlighting
 #
-local PLUGIN='/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+PLUGIN='/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
 
 if [ -f ${PLUGIN} ]; then
     ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
@@ -30,3 +30,5 @@ ZSH_HIGHLIGHT_STYLES[path]='bold'
 
 ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=magenta,bold'
 ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=magenta,bold'
+
+unset PLUGIN
