@@ -86,12 +86,12 @@ bindkey "${terminfo[kich1]}" quoted-insert
 bindkey ' ' magic-space
 
 # [Ctrl|Alt-RightArrow] - move forward one word
-bindkey '\C-[Oc' forward-word
-bindkey '\e\e[C' forward-word
+[[ -n "${terminfo[kRIT5]}" ]] && bindkey "${terminfo[kRIT5]}" forward-word
+[[ -n "${terminfo[kRIT3]}" ]] && bindkey "${terminfo[kRIT3]}" forward-word
 
 # [Ctrl|Alt-LeftArrow] - move backward one word
-bindkey '\C-[Od' backward-word
-bindkey '\e\e[D' backward-word
+[[ -n "${terminfo[kLFT5]}" ]] && bindkey "${terminfo[kLFT5]}" backward-word
+[[ -n "${terminfo[kLFT3]}" ]] && bindkey "${terminfo[kLFT3]}" backward-word
 
 # [Shift-Tab] - move through the completion menu backwards
 bindkey "${terminfo[kcbt]}" reverse-menu-complete
